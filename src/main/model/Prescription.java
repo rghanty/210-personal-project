@@ -1,20 +1,19 @@
 package model;
 
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import sun.awt.image.ImageWatched;
+
+import java.util.*;
 
 // Represents a doctor's prescription consisting of a Medicines and their corresponding consumption
 // time during the day.
 public class Prescription {
-    private HashMap<Medicine, Integer> prescription;
+    private LinkedHashMap<Medicine, Integer> prescription;
 
     // EFFECTS: creates a prescription object with a hashmap consisting of key-value pairs of medicines
     // and their corresponding times of consumption in 24-hour format
     public Prescription() {
-        prescription = new HashMap<Medicine, Integer>();
+        prescription = new LinkedHashMap<>();
     }
 
     // REQUIRES: time should be an hour of the day in 24-hour format, or:
@@ -35,14 +34,14 @@ public class Prescription {
         return false;
     }
 
-    // EFFECTS: returns a list of medicine names from the prescription.
+    // EFFECTS: returns a list of medicine names from the prescription in alphabetical order.
     public ArrayList<String> viewMeds() {
         ArrayList<String> meds = new ArrayList<>();
         for (Medicine med: prescription.keySet()) {
             meds.add(med.getName());
 
         }
-        Collections.reverse(meds);
+
         return meds;
     }
 

@@ -53,12 +53,13 @@ class PrescriptionTest {
     @Test
     public void testViewMeds() {
         ArrayList<String> meds = new ArrayList<>();
+        Medicine m3 = new Medicine("ABC",1);
         p.addMedTime(m1,20);
         p.addMedTime(m2,20);
-        meds.add(m1.getName());
-        meds.add(m2.getName());
+        p.addMedTime(m3, 19);
+
         ArrayList<String> premeds = p.viewMeds();
-        assertEquals(premeds, meds);
+        assertEquals(premeds, Arrays.asList("Paracetamol", "PAN-D", "ABC"));
         }
 
 
