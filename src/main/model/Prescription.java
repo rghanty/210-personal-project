@@ -1,7 +1,7 @@
 package model;
 
 
-import sun.awt.image.ImageWatched;
+
 
 import java.util.*;
 
@@ -26,10 +26,18 @@ public class Prescription {
 
     // MODIFIES: this
     // EFFECTS: removes the given medicine from the prescription.
-    public boolean checkOffMed(Medicine med) {
-        if (prescription.containsKey(med)) {
-            prescription.remove(med);
-            return true;
+    public boolean checkOffMed(String medname, Integer time) {
+//        if (prescription.containsKey(med) && (viewTime(med).equals(time))) {
+//            prescription.remove(med);
+//            return true;
+//        }
+//        return false;
+
+        for (Medicine m : prescription.keySet()) {
+            if ((m.getName().equals(medname)) && viewTime(m).equals(time)) {
+                prescription.remove(m);
+                return true;
+            }
         }
         return false;
     }
@@ -48,10 +56,12 @@ public class Prescription {
     // REQUIRES: 0 <= time < 24
     // MODIFIES: this
     // EFFECTS: changes the corresponding time of a medicine.
-    public boolean changeTime(Medicine med, Integer time) {
-        if (prescription.containsKey(med)) {
-            prescription.replace(med, time);
-            return true;
+    public boolean changeTime(String med, Integer timeInit, Integer timeFinal) {
+        for (Medicine m: prescription.keySet()) {
+            if (m.getName().equals(med) && (viewTime(m) == timeInit)) {
+                prescription.replace(m, timeFinal);
+                return true;
+            }
         }
         return false;
     }
@@ -66,5 +76,11 @@ public class Prescription {
     // EFFECTS: returns size of the prescription.
     public int viewSize() {
         return prescription.size();
+    }
+
+    // EFFECTS: returns a set of Medicine objects in the prescription
+    public Set<Medicine> presMeds() {
+        return prescription.keySet();
+
     }
 }

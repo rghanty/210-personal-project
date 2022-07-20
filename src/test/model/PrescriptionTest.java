@@ -4,9 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -44,10 +42,14 @@ class PrescriptionTest {
     @Test
     public void testCheckOffMed() {
         p.addMedTime(m1,20);
-        assertTrue(p.checkOffMed(m1));
-        assertFalse(p.checkOffMed(m2));
+        assertTrue(p.checkOffMed(m1.getName(),20));
+        assertFalse(p.checkOffMed(m2.getName(),2));
         p.addMedTime(m2,20);
-        assertTrue(p.checkOffMed(m2));
+        assertTrue(p.checkOffMed(m2.getName(),20));
+        p.addMedTime(m1,10);
+        p.addMedTime(m2,20);
+        assertTrue(p.checkOffMed(m1.getName(),10));
+        assertFalse(p.checkOffMed(m2.getName(),15));
     }
 
     @Test
@@ -69,9 +71,11 @@ class PrescriptionTest {
 
     @Test
     public void testChangeTime() {
-        assertFalse(p.changeTime(m1,20));
+        assertFalse(p.changeTime("Paracetamol",20, 10));
         p.addMedTime(m1, 10);
-        assertTrue(p.changeTime(m1,20));
+        p.addMedTime(m2,20);
+        assertTrue(p.changeTime(m1.getName(),10, 20));
+        assertFalse(p.changeTime(m2.getName(),15,20));
 
     }
 
@@ -91,6 +95,16 @@ class PrescriptionTest {
         Medicine m3 = new Medicine("ABC", 2);
         p.addMedTime(m3, 14);
         assertEquals(p.viewSize(),3);
+    }
+
+    @Test
+    public void testPresMeds() {
+        p.addMedTime(m1,10);
+        p.addMedTime(m2,20);
+        Set<Medicine> test = new HashSet<>();
+        test.add(m1);
+        test.add(m2);
+        assertEquals(p.presMeds(), test);
     }
 
 
