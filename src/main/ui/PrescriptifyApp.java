@@ -3,7 +3,9 @@ package ui;
 import model.Medicine;
 import model.Prescription;
 
+
 import java.util.*;
+
 
 
 public class PrescriptifyApp {
@@ -11,17 +13,39 @@ public class PrescriptifyApp {
     private Integer time;
     private Scanner userInput;
     private Prescription prescription;
-    private TimerTask timerTask;
-    private Calendar calendar = new GregorianCalendar();
+    private Calendar calendar;
 
 
-    // EFFECTS: initiates the prescription application
+    // EFFECTS: initiates the prescription application, after which the reminder system begins.
     public PrescriptifyApp() {
         prescription = new Prescription();
         showOptions();
         begin();
-        //remind();
+        remind();
+
     }
+
+    // EFFECTS: initiates the reminder system.
+    private void remind() {
+        System.out.println("____________Reminder System Active_____________");
+
+        ArrayList<Medicine> medList = prescription.medsAsList();
+        while (medList.size() != 0) {
+            calendar = new GregorianCalendar();
+            for (int i = 0; i < medList.size(); i++) {
+                if ((prescription.viewTime(medList.get(i)).equals(calendar.get(Calendar.HOUR_OF_DAY)))
+                        && (calendar.get(Calendar.MINUTE) == 0)) {
+                    System.out.println("Time to take " + medList.get(i).getName() + "!!!");
+                    medList.remove(medList.get(i));
+                } else {
+                    continue;
+                }
+            }
+        }
+        System.out.println("All reminders given, if you want to add more medicines, run the program again.");
+    }
+
+
 
     // MODIFIES: this
     // EFFECTS: takes a user input and processes it
@@ -34,15 +58,6 @@ public class PrescriptifyApp {
             if (option.equals("quit")) {
                 break;
             } else if (option.equals("add")) {
-//                Scanner in = new Scanner(System.in);
-//                System.out.println("How many medicines do you want to add to the prescription?");
-//                int num = in.nextInt();
-//                if (num < 1) {
-//                    System.out.println("The number of medicines should be at least 1");
-//                    fillPrescription();
-//                } else {
-//                    fillPrescription();
-//                }
                 fillPrescription();
 
             } else if (option.equals("edit")) {

@@ -107,5 +107,15 @@ class PrescriptionTest {
         assertEquals(p.presMeds(), test);
     }
 
+    @Test
+    public void testMedsAsList() {
+        p.addMedTime(m1, 10);
+        p.addMedTime(m2,20);
+        ArrayList<Medicine> meds = new ArrayList<>();
+        meds.add(m1);
+        meds.add(m2);
+        assertEquals(p.medsAsList(),meds);
+    }
+
 
 }

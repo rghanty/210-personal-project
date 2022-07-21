@@ -83,4 +83,13 @@ public class Prescription {
         return prescription.keySet();
 
     }
+
+    // EFFECTS: returns an array list of Medicine objects in the prescription.
+    public ArrayList<Medicine> medsAsList() {
+        ArrayList<Medicine> listMeds = new ArrayList<>();
+        for (Medicine m: prescription.keySet()) {
+            listMeds.add(m);
+        }
+        return listMeds;
+    }
 }
