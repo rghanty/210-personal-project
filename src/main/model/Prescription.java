@@ -27,12 +27,6 @@ public class Prescription {
     // MODIFIES: this
     // EFFECTS: removes the given medicine from the prescription.
     public boolean checkOffMed(String medname, Integer time) {
-//        if (prescription.containsKey(med) && (viewTime(med).equals(time))) {
-//            prescription.remove(med);
-//            return true;
-//        }
-//        return false;
-
         for (Medicine m : prescription.keySet()) {
             if ((m.getName().equals(medname)) && viewTime(m).equals(time)) {
                 prescription.remove(m);

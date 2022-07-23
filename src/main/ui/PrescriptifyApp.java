@@ -46,7 +46,7 @@ public class PrescriptifyApp {
     }
 
 
-
+    // REQUIRES: userInput should be a string.
     // MODIFIES: this
     // EFFECTS: takes a user input and processes it
     private void begin() {
@@ -76,10 +76,12 @@ public class PrescriptifyApp {
 
     // EFFECTS: prints out a list of medicines in the prescription to be taken in the future and their times.
     private void checkMeds() {
+
         System.out.println("________________________________");
         System.out.println("The given medicines to be consumed are: ");
         int i = 1;
         for (Medicine m: prescription.presMeds()) {
+            calendar = new GregorianCalendar();
             if (calendar.get(Calendar.HOUR_OF_DAY) < prescription.viewTime(m)) {
                 System.out.println(i + "." + "Medicine name: " + m.getName() + " at time: "
                         + prescription.viewTime(m) + "00 hrs");
@@ -90,6 +92,7 @@ public class PrescriptifyApp {
         }
     }
 
+    // REQUIRES: userInput must be a string.
     // MODIFIES: this
     // EFFECTS: presents a menu of edit options and performs an operation based on user input.
     private void editPrescription() {
@@ -114,6 +117,7 @@ public class PrescriptifyApp {
         }
     }
 
+    // REQUIRES: userInput should be a string.
     // EFFECTS: prints the time of the user input medicine.
     private void viewMed() {
         System.out.println("Specify the name of the medicine you want to check the time of:");
@@ -124,8 +128,11 @@ public class PrescriptifyApp {
                         + "00 hrs");
             }
         }
+
+
     }
 
+    // REQUIRES: userInput for medname should be a string, an integer for timeInit and an integer for timeFinal.
     // MODIFIES: this
     // EFFECTS: changes the time of a user input medicine to a user input time.
     private void alterMed() {
@@ -143,6 +150,7 @@ public class PrescriptifyApp {
         }
     }
 
+    // REQUIRES: userInput should be a string for medname and an integer for medtime.
     // MODIFIES: this
     // EFFECTS: removes a medicine with a user input name and time from the prescription
     private void removeMed() {
@@ -182,7 +190,7 @@ public class PrescriptifyApp {
     }
 
 
-
+    // REQUIRES: userInput should be an integer for num, a string for name, an integer for freq, an integer for time.
     // MODIFIES: this
     // EFFECTS: fills out a prescription with user given medicines, their dosages and timings.
     public void fillPrescription() {
