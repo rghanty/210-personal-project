@@ -7,7 +7,7 @@ import model.Prescription;
 import java.util.*;
 
 
-
+// class for the application's user interface.
 public class PrescriptifyApp {
     private Medicine med;
     private Integer time;

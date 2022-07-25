@@ -8,6 +8,7 @@ import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+// tests for methods in the Prescription class.
 class PrescriptionTest {
 
     Prescription p;

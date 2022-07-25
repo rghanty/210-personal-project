@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+// tests for methods in the Medicine class.
 public class MedicineTest {
 
     Medicine m;
