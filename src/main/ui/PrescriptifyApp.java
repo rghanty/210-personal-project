@@ -1,19 +1,30 @@
 package ui;
 
+import jdk.nashorn.internal.ir.debug.JSONWriter;
 import model.Medicine;
 import model.Prescription;
+import persistence.ReadPrescription;
+import persistence.WritePrescription;
 
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.nio.channels.ReadPendingException;
 import java.util.*;
 
-
+// some of the code and methods are modeled after CPSC210/JsonSerializationDemo
+// https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
 // class for the application's user interface.
 public class PrescriptifyApp {
+    private String fileLocation = "./data/prescriptions.json";
     private Medicine med;
     private Integer time;
     private Scanner userInput;
     private Prescription prescription;
     private Calendar calendar;
+    private ReadPrescription reader = new ReadPrescription(fileLocation);
+    private WritePrescription writer = new WritePrescription(fileLocation);
 
 
     // EFFECTS: initiates the prescription application, after which the reminder system begins.
@@ -66,6 +77,11 @@ public class PrescriptifyApp {
             } else if (option.equals("check")) {
                 checkMeds();
 
+            } else if (option.equals("save")) {
+                savePrescription();
+
+            } else if (option.equals("load")) {
+                loadPrescription();
             } else {
                 System.out.println("Please enter a valid option.");
 
@@ -186,6 +202,8 @@ public class PrescriptifyApp {
         System.out.println("add: To add medicines to your prescription");
         System.out.println("edit: To modify your prescription");
         System.out.println("check: To check upcoming medicines for consumption and their timings");
+        System.out.println("save: To save the contents of the current prescription to the file.");
+        System.out.println("load: To load the contents of the prescription from the file");
         System.out.println("quit: To quit the application");
     }
 
@@ -220,4 +238,33 @@ public class PrescriptifyApp {
             System.out.println("Medicine(s) successfully added!");
         }
     }
+
+    // EFFECTS: saves the prescription to a file.
+    public void savePrescription() {
+        try {
+            writer.fileOpen();
+            writer.writeTo(prescription);
+            writer.closeWriter();
+            System.out.println("Saved medicines to file " + fileLocation);
+
+        } catch (FileNotFoundException f) {
+            System.out.println("Sorry, the file with " + fileLocation + " was not found");
+        } catch (NullPointerException n) {
+            System.out.println("Sorry, there was nothing to write to file");
+        }
+
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads the contents of the prescription from the file.
+    public void loadPrescription() {
+        try {
+            prescription = reader.readPres();
+            System.out.println("Loading prescription contents from " + fileLocation);
+        } catch (IOException i) {
+            System.out.println("Sorry, the required operation could not be performed.");
+        }
+
+    }
+
 }

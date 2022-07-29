@@ -1,5 +1,7 @@
 package model;
 
+import org.json.JSONObject;
+
 // Represents a Medicine with a name and a dosage, i.e, amount of times a medicine should be consumed during the day.
 public class Medicine {
     private String name;
@@ -32,5 +34,14 @@ public class Medicine {
     // EFFECTS: returns the name of the Medicine object.
     public String getName() {
         return name;
+    }
+
+    // EFFECTS: creates a medicine JSONObject.
+    public JSONObject medToJson(int time) {
+        JSONObject medJson = new JSONObject();
+        medJson.put("Medicine Name:", name);
+        medJson.put("Medicine Dosage:",dosage);
+        medJson.put("Medicine Time:",time);
+        return medJson;
     }
 }

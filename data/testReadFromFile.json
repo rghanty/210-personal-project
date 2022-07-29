@@ -1,0 +1,15 @@
+{
+  "Medicines": [
+    {
+      "Medicine Time:": 20,
+      "Medicine Dosage:": 1,
+      "Medicine Name:": "abc"
+    },
+    {
+      "Medicine Time:": 21,
+      "Medicine Dosage:": 1,
+      "Medicine Name:": "bcd"
+    }
+  ],
+  "name": "My Prescription"
+}

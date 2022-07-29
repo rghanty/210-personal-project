@@ -1,5 +1,7 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -17,113 +19,108 @@ class PrescriptionTest {
     Medicine m3;
 
     @BeforeEach
-    public void setup(){
+    public void setup() {
         p = new Prescription();
-        m1 = new Medicine("Paracetamol",1);
+        m1 = new Medicine("Paracetamol", 1);
         m2 = new Medicine("PAN-D", 2);
         m3 = new Medicine("Med3", 3);
 
 
-
     }
+
     @Test
-    public void testPrescription(){
-        assertEquals(p.viewSize(),0);
-        assertEquals(p.viewMeds().size(),0);
+    public void testPrescription() {
+        assertEquals(p.viewSize(), 0);
+        assertEquals(p.viewMeds().size(), 0);
     }
 
     @Test
     public void testAddMedTime() {
         assertFalse(p.viewMeds().contains(m1.getName()));
-        p.addMedTime(m1,21);
+        p.addMedTime(m1, 21);
         assertTrue(p.viewMeds().contains(m1.getName()));
         assertFalse(p.viewMeds().contains(m2.getName()));
-        p.addMedTime(m2,20);
+        p.addMedTime(m2, 20);
         assertTrue(p.viewMeds().contains(m2.getName()));
         assertFalse(p.viewMeds().contains(m3.getName()));
-        p.addMedTime(m3,19);
+        p.addMedTime(m3, 19);
         assertTrue(p.viewMeds().contains(m3.getName()));
-
 
 
     }
 
     @Test
     public void testCheckOffMed() {
-        p.addMedTime(m1,20);
-        assertTrue(p.checkOffMed(m1.getName(),20));
-        assertFalse(p.checkOffMed(m2.getName(),2));
-        p.addMedTime(m2,20);
-        assertTrue(p.checkOffMed(m2.getName(),20));
-        p.addMedTime(m1,10);
-        p.addMedTime(m2,20);
-        assertTrue(p.checkOffMed(m1.getName(),10));
-        assertFalse(p.checkOffMed(m2.getName(),15));
-        p.addMedTime(m3,21);
-        assertTrue(p.checkOffMed(m3.getName(),21));
-        assertFalse(p.checkOffMed(m3.getName(),10));
+        p.addMedTime(m1, 20);
+        assertTrue(p.checkOffMed(m1.getName(), 20));
+        assertFalse(p.checkOffMed(m2.getName(), 2));
+        p.addMedTime(m2, 20);
+        assertTrue(p.checkOffMed(m2.getName(), 20));
+        p.addMedTime(m1, 10);
+        p.addMedTime(m2, 20);
+        assertTrue(p.checkOffMed(m1.getName(), 10));
+        assertFalse(p.checkOffMed(m2.getName(), 15));
+        p.addMedTime(m3, 21);
+        assertTrue(p.checkOffMed(m3.getName(), 21));
+        assertFalse(p.checkOffMed(m3.getName(), 10));
     }
 
     @Test
     public void testViewMeds() {
         ArrayList<String> meds = new ArrayList<>();
 
-        p.addMedTime(m1,20);
-        p.addMedTime(m2,20);
+        p.addMedTime(m1, 20);
+        p.addMedTime(m2, 20);
         p.addMedTime(m3, 19);
 
         ArrayList<String> premeds = p.viewMeds();
         assertEquals(premeds, Arrays.asList("Paracetamol", "PAN-D", "Med3"));
-        }
-
-
-
-
+    }
 
 
     @Test
     public void testChangeTime() {
-        assertFalse(p.changeTime("Paracetamol",20, 10));
+        assertFalse(p.changeTime("Paracetamol", 20, 10));
         p.addMedTime(m1, 10);
-        p.addMedTime(m2,20);
-        p.addMedTime(m3,21);
-        assertTrue(p.changeTime(m1.getName(),10, 20));
-        assertFalse(p.changeTime(m2.getName(),15,20));
-        assertFalse(p.changeTime(m3.getName(),15,20));
-        assertTrue(p.changeTime(m3.getName(),21,20));
+        p.addMedTime(m2, 20);
+        p.addMedTime(m3, 21);
+        assertTrue(p.changeTime(m1.getName(), 10, 20));
+        assertFalse(p.changeTime(m2.getName(), 15, 20));
+        assertFalse(p.changeTime(m3.getName(), 15, 20));
+        assertTrue(p.changeTime(m3.getName(), 21, 20));
 
     }
 
     @Test
     public void testViewTime() {
-        p.addMedTime(m1,10);
-        assertEquals(p.viewTime(m1),10);
-        p.addMedTime(m2,20);
-        assertEquals(p.viewTime(m2),20);
-        p.addMedTime(m3,21);
-        assertEquals(p.viewTime(m3),21);
+        p.addMedTime(m1, 10);
+        assertEquals(p.viewTime(m1), 10);
+        p.addMedTime(m2, 20);
+        assertEquals(p.viewTime(m2), 20);
+        p.addMedTime(m3, 21);
+        assertEquals(p.viewTime(m3), 21);
     }
 
     @Test
     public void testViewSize() {
         p.addMedTime(m1, 20);
         p.addMedTime(m2, 12);
-        assertEquals(p.viewSize(),2);
+        assertEquals(p.viewSize(), 2);
 
         p.addMedTime(m3, 14);
-        assertEquals(p.viewSize(),3);
-        p.checkOffMed(m2.getName(),12);
-        assertEquals(p.viewSize(),2);
-        p.checkOffMed(m1.getName(),12);
-        assertEquals(p.viewSize(),2);
+        assertEquals(p.viewSize(), 3);
+        p.checkOffMed(m2.getName(), 12);
+        assertEquals(p.viewSize(), 2);
+        p.checkOffMed(m1.getName(), 12);
+        assertEquals(p.viewSize(), 2);
 
     }
 
     @Test
     public void testPresMeds() {
-        p.addMedTime(m1,10);
-        p.addMedTime(m2,20);
-        p.addMedTime(m3,21);
+        p.addMedTime(m1, 10);
+        p.addMedTime(m2, 20);
+        p.addMedTime(m3, 21);
         Set<Medicine> test = new HashSet<>();
         test.add(m1);
         test.add(m2);
@@ -134,14 +131,42 @@ class PrescriptionTest {
     @Test
     public void testMedsAsList() {
         p.addMedTime(m1, 10);
-        p.addMedTime(m2,20);
-        p.addMedTime(m3,21);
+        p.addMedTime(m2, 20);
+        p.addMedTime(m3, 21);
         ArrayList<Medicine> meds = new ArrayList<>();
         meds.add(m1);
         meds.add(m2);
         meds.add(m3);
-        assertEquals(p.medsAsList(),meds);
+        assertEquals(p.medsAsList(), meds);
     }
 
+    @Test
+    public void testConvertToJson() {
+        p.addMedTime(m1, 10);
+        p.addMedTime(m2, 20);
+        JSONObject json = p.convertToJson();
+        assertEquals(json.get("name"), "My Prescription");
+        JSONArray jarray = (JSONArray) json.get("Medicines");
+        JSONObject med1 = jarray.getJSONObject(0);
+        assertEquals(med1.get("Medicine Name:"), m1.getName());
+        assertEquals(med1.get("Medicine Time:"), p.viewTime(m1));
+        assertEquals(med1.get("Medicine Dosage:"), m1.getDosage());
+        JSONObject med2 = jarray.getJSONObject(1);
+        assertEquals(med2.get("Medicine Name:"), m2.getName());
+        assertEquals(med2.get("Medicine Time:"), p.viewTime(m2));
+        assertEquals(med2.get("Medicine Dosage:"), m2.getDosage());
+
+
+    }
+
+    @Test
+    public void testMedsToJson() {
+        p.addMedTime(m1, 10);
+        JSONArray jarray = p.medsToJson();
+        JSONObject med1 = jarray.getJSONObject(0);
+        assertEquals(med1.get("Medicine Name:"), m1.getName());
+        assertEquals(med1.get("Medicine Time:"), p.viewTime(m1));
+        assertEquals(med1.get("Medicine Dosage:"), m1.getDosage());
+    }
 
 }

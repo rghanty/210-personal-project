@@ -3,6 +3,9 @@ package model;
 
 
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.util.*;
 
 // Represents a doctor's prescription consisting of a Medicines and their corresponding consumption
@@ -85,5 +88,20 @@ public class Prescription {
             listMeds.add(m);
         }
         return listMeds;
+    }
+
+    public JSONObject convertToJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", "My Prescription");
+        json.put("Medicines", medsToJson());
+        return json;
+    }
+
+    public JSONArray medsToJson() {
+        JSONArray jarray = new JSONArray();
+        for (Medicine m: prescription.keySet()) {
+            jarray.put(m.medToJson(viewTime(m)));
+        }
+        return jarray;
     }
 }
