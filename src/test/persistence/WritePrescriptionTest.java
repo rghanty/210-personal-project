@@ -1,12 +1,10 @@
 package persistence;
 
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
+
 import model.Medicine;
 import model.Prescription;
-import org.json.JSONWriter;
 import org.junit.jupiter.api.Test;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

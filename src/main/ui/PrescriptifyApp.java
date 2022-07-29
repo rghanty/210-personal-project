@@ -1,16 +1,15 @@
 package ui;
 
-import jdk.nashorn.internal.ir.debug.JSONWriter;
+
 import model.Medicine;
 import model.Prescription;
 import persistence.ReadPrescription;
 import persistence.WritePrescription;
 
 
-import java.io.File;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.nio.channels.ReadPendingException;
 import java.util.*;
 
 // some of the code and methods are modeled after CPSC210/JsonSerializationDemo

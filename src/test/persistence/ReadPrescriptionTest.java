@@ -1,6 +1,5 @@
 package persistence;
 
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 import model.Prescription;
 import org.junit.jupiter.api.Test;
 
