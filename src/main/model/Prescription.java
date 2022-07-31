@@ -90,6 +90,8 @@ public class Prescription {
         return listMeds;
     }
 
+    // MODIFIES: this
+    // EFFECTS: converts the prescription object into a JSON Object.
     public JSONObject convertToJson() {
         JSONObject json = new JSONObject();
         json.put("name", "My Prescription");
@@ -97,6 +99,8 @@ public class Prescription {
         return json;
     }
 
+    // MODIFIES: this
+    // EFFECTS: converts all the medicines in the prescription into a JSON object and stores them in a JSON Array.
     public JSONArray medsToJson() {
         JSONArray jarray = new JSONArray();
         for (Medicine m: prescription.keySet()) {
