@@ -7,15 +7,16 @@ import persistence.ReadPrescription;
 import persistence.WritePrescription;
 
 
-
+import javax.swing.*;
+import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.*;
 
 // some of the code and methods are modeled after CPSC210/JsonSerializationDemo
 // https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
-// class for the application's user interface.
-public class PrescriptifyApp {
+// class for the application's graphical user interface.
+public class PrescriptifyApp extends JFrame {
     private String fileLocation = "./data/prescriptions.json";
     private Medicine med;
     private Integer time;
@@ -25,15 +26,138 @@ public class PrescriptifyApp {
     private ReadPrescription reader = new ReadPrescription(fileLocation);
     private WritePrescription writer = new WritePrescription(fileLocation);
 
+    protected String projLogo = "./data/ProjectLogo.PNG";
+    private JButton addMedButton;
+    private JButton editPresButton;
+    private JButton checkMedButton;
+    private JButton quitButton;
+    private JButton saveButton;
+    private JButton loadButton;
+    private ActionListener addMedListener;
+    private ActionListener checkMedListener;
+    private ActionListener saveListener;
+    private ActionListener loadListener;
+    private ActionListener quitListener;
+
 
     // EFFECTS: initiates the prescription application, after which the reminder system begins.
     public PrescriptifyApp() {
         prescription = new Prescription();
-        showOptions();
-        begin();
-        remind();
+
+        WindowMaker wm = new WindowMaker();
+
+        wm.openingMenu(this);
+        buttonListeners();
+
+        wm.addMedButton.addActionListener(addMedListener);
+        wm.saveButton.addActionListener(saveListener);
+        wm.loadButton.addActionListener(loadListener);
+        wm.checkMedButton.addActionListener(checkMedListener);
+        wm.quitButton.addActionListener(quitListener);
+
+
+
+        //showOptions();
+        //begin();
+        //remind();
 
     }
+
+//    // EFFECTS: creates the skeleton for the opening menu of the application.
+//    public void initializeOpeningMenu() {
+//
+//        WindowMaker wm = new WindowMaker();
+//        wm.standardWindow(this);
+//
+//        JLabel stethLabel = new JLabel("");
+//        labelMaker("./data/sthetoscope.png", stethLabel);
+//        stethLabel.setBounds(36, 133, 180, 227);
+//        this.getContentPane().add(stethLabel);
+//
+//        JLabel pillLabel = new JLabel("");
+//        labelMaker("./data/pills.png",pillLabel);
+//        pillLabel.setBounds(494, 114, 261, 284);
+//        this.getContentPane().add(pillLabel);
+//
+//        titleLabel();
+//        addMedButton = makeButton("Add medicine", 126);
+//        //editPresButton = makeButton("Edit prescription", 176);
+//        checkMedButton = makeButton("Check medicines", 176);
+//        saveButton = makeButton("Save prescription", 226);
+//        loadButton = makeButton("Load prescription", 276);
+//        quitButton = makeButton("Quit", 326);
+//
+//
+//
+//
+//
+//    }
+//
+//    // EFFECTS: creates a label with the icon as a picture with the given source path
+//    private void labelMaker(String source, JLabel label) {
+//        ImageIcon icon = new ImageIcon(source);
+//        Image image = icon.getImage();
+//        Image modified = image.getScaledInstance(175, 175, Image.SCALE_SMOOTH);
+//        icon = new ImageIcon(modified);
+//        label.setIcon(icon);
+//    }
+//
+//    // EFFECTS: creates the title label for the opening menu of the application.
+//    public void titleLabel() {
+//        JLabel topLabel = new JLabel("Prescriptify");
+//        topLabel.setForeground(Color.WHITE);
+//        topLabel.setFont(new Font("Georgia", Font.BOLD, 20));
+//        topLabel.setHorizontalAlignment(SwingConstants.CENTER);
+//        topLabel.setBounds(206, 23, 314, 35);
+//        this.getContentPane().add(topLabel);
+//
+//        JLabel bottomLabel = new JLabel("A personal prescription application");
+//        bottomLabel.setFont(new Font("Georgia", Font.BOLD, 18));
+//        bottomLabel.setForeground(Color.WHITE);
+//        bottomLabel.setBounds(206, 56, 359, 35);
+//        this.getContentPane().add(bottomLabel);
+//
+//
+//    }
+//
+//    // EFFECTS: creates all the buttons on the main window of the application.
+//    public JButton makeButton(String title, int y) {
+//
+//        JButton button = new JButton(title);
+//        button.setBackground(new Color(120, 120, 255));
+//        button.setFont(new Font("Century", Font.BOLD, 15));
+//        button.setForeground(Color.WHITE);
+//        button.setBounds(262, y, 197, 28);
+//        this.getContentPane().add(button);
+//        return button;
+//
+//    }
+
+    // EFFECTS: implements an action listener for each button in the main panel.
+    public void buttonListeners() {
+        addMedListener = e -> new AddMedsUI(prescription);
+        saveListener = e -> {
+            savePrescription();
+            JOptionPane.showMessageDialog(null, "Saved medicines to file", "Save",
+                    JOptionPane.PLAIN_MESSAGE);
+        };
+        loadListener = e -> {
+            loadPrescription();
+            JOptionPane.showMessageDialog(null, "Loaded Medicine info from file", "Load",
+                    JOptionPane.PLAIN_MESSAGE);
+        };
+        checkMedListener = e -> new CheckMedsUI(prescription);
+        quitListener = e -> {
+            //prFrame.setVisible(false);
+            new RemindUI(prescription);
+            this.dispose();
+        };
+
+    }
+
+
+
+// ------------------------------ The console ui methods start here --------------------------------------------------
 
     // EFFECTS: initiates the reminder system.
     private void remind() {
