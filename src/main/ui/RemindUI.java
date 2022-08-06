@@ -59,6 +59,7 @@ public class RemindUI extends JFrame {
         }).start();
     }
 
+    // MODIFIES: this
     // EFFECTS: adds labels to the remindFrame
     private void addLabels() {
         JLabel titleLabel = new JLabel("Reminder System Active");

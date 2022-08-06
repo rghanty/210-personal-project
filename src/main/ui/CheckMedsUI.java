@@ -7,6 +7,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
@@ -20,6 +22,7 @@ public class CheckMedsUI extends JFrame {
     Calendar calendar;
     private JLabel medLabel;
     private JButton okButton;
+    private KeyListener keyListener;
 
     // EFFECTS: constructs the JFrame which displays medicines to be consumed.
     public CheckMedsUI(Prescription prescription) {
@@ -30,6 +33,7 @@ public class CheckMedsUI extends JFrame {
 
         makeTopLabel();
         makeMedsLabels();
+        makeOkKeyListener();
         makeOKButton();
 
     }
@@ -48,6 +52,8 @@ public class CheckMedsUI extends JFrame {
         okButton.setBackground(new Color(110, 120, 250));
         okButton.setBounds(262, 442, 197, 28);
         this.getContentPane().add(okButton);
+
+        okButton.addKeyListener(keyListener);
     }
 
     // MODIFIES: this
@@ -81,6 +87,29 @@ public class CheckMedsUI extends JFrame {
         topLabel.setFont(new Font("Georgia", Font.BOLD, 25));
         topLabel.setBounds(27, 66, 311, 100);
         this.getContentPane().add(topLabel);
+    }
+
+    // EFFECTS: creates the key listener for the OK button.
+    public void makeOkKeyListener() {
+        keyListener = new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    CheckMedsUI.this.setVisible(false);
+
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+
+            }
+        };
     }
 
 
