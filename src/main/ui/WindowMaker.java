@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 
 
-// this class is responsible for creating a standard visual framework for a panel in the application
+// this class is responsible for creating a standard visual framework for a frame in the application
 public class WindowMaker extends JFrame {
     private final String projLogo = "./data/ProjectLogo.PNG";
 
@@ -14,6 +14,9 @@ public class WindowMaker extends JFrame {
     JButton loadButton;
     JButton quitButton;
     JButton checkMedButton;
+
+    JMenuBar menuBar;
+    JMenu quitMenu;
 
     public WindowMaker() {
 
@@ -53,11 +56,14 @@ public class WindowMaker extends JFrame {
         titleLabel(frame);
 
         addMedButton = makeButton("Add medicine", 126, frame);
-        //editPresButton = makeButton("Edit prescription", 176);
         checkMedButton = makeButton("Check medicines", 176, frame);
         saveButton = makeButton("Save prescription", 226, frame);
         loadButton = makeButton("Load prescription", 276, frame);
         quitButton = makeButton("Quit", 326, frame);
+
+        makeMenu(frame);
+
+
         frame.revalidate();
         frame.repaint();
     }
@@ -101,6 +107,19 @@ public class WindowMaker extends JFrame {
         frame.getContentPane().add(button);
         return button;
 
+    }
+
+    // EFFECTS: creates a menu bar and a menu which shows an option to quit the application and begin the
+    // reminder system.
+    public void makeMenu(JFrame frame) {
+        menuBar = new JMenuBar();
+        menuBar.setBounds(0, 10, 101, 22);
+        menuBar.setBackground(new Color(136, 136, 243));
+        frame.setJMenuBar(menuBar);
+
+        quitMenu = new JMenu("Quit (Start Reminder System)");
+        menuBar.add(quitMenu);
+        quitMenu.add(quitButton);
     }
 
 

@@ -36,12 +36,13 @@ many others to take care of their health and maintain a routine of taking medici
 - You can initiate the reminder system by clicking on quit and the system will display a pop-up window 
 and a sound whenever it's time to take a medicine.
 - You can locate the visual component (a picture of a stethoscope and prescription pills) right as the application 
-opens and the main window appears. Another visual element is a picture of a stopwatch which becomes visible as soon as 
-the "Quit" button is pressed.
-- Navigate between buttons using the tab key and click on the buttons using the enter key to perform the required task.
-- You can press the enter key in the addMeds menu on the submit button to submit the medicine and on the cancel button 
+opens and the main window appears. 
+- Another visual element is a picture of a stopwatch which becomes visible as soon as 
+the "Quit" button is accessed from the menu at the top and clicked.
+- Navigate between buttons using the tab key and use the buttons using the enter key to perform the required task.
+- You can press the enter key in the window to add medicines on the submit button to submit the medicine and on the cancel button 
 to cancel.
-- In the checkMeds JFrame, click on the enter key to leave the window.
+- In the window to check medicines, use the enter key to leave the window.
 - You can save the state of the prescription by clicking on the "Save prescription" button in the main menu.
 - You can reload the state of the prescription by clicking on the "Load prescription" button in the main menu.
 - **Important Note:** If you want to add more medicines to an existing file, make sure to click on "Load prescription" 

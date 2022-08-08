@@ -45,6 +45,9 @@ public class AddMedsUI extends JFrame {
 
 
 
+
+
+
     }
 
 
@@ -100,14 +103,14 @@ public class AddMedsUI extends JFrame {
         this.getContentPane().add(medName);
 
         nameField = new JTextField();
-        nameField.setBounds(289, 85, 215, 19);
+        nameField.setBounds(290, 85, 215, 20);
         this.getContentPane().add(nameField);
         nameField.setColumns(10);
 
-        medTime = new JLabel("Medicine Time:");
+        medTime = new JLabel("Medicine Time (0-23):");
         medTime.setForeground(Color.WHITE);
         medTime.setFont(new Font("Georgia", Font.BOLD, 15));
-        medTime.setBounds(10, 174, 146, 50);
+        medTime.setBounds(10, 180, 200, 50);
         this.getContentPane().add(medTime);
 
         timeField = new JTextField();
@@ -131,7 +134,7 @@ public class AddMedsUI extends JFrame {
 
 
     // MODIFIES: this
-    // EFFECTS: makes the key listener for the submit listener
+    // EFFECTS: makes the key listener for the submit button
     public void startSubmitListener() {
         submitListener = new KeyListener() {
             @Override
