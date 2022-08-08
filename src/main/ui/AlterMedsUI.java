@@ -40,7 +40,7 @@ public class AlterMedsUI extends JFrame {
     }
 
     // MODIFIES: this
-    // EFFECTS: creates all the labels in the frame
+    // EFFECTS: creates the labels in the frame
     private void makeLabels() {
         name = new JLabel("Medicine Name:");
         name.setForeground(new Color(255, 255, 255));
@@ -66,7 +66,7 @@ public class AlterMedsUI extends JFrame {
 
 
     // MODIFIES: this
-    // EFFECTS: creates all the text fields in the frame
+    // EFFECTS: creates the text fields in the frame
     private void makeFields() {
         nameField = new JTextField();
         nameField.setBounds(290, 85, 215, 20);

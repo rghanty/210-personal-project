@@ -34,7 +34,7 @@ many others to take care of their health and maintain a routine of taking medici
 - You can add medicines to the prescription by clicking on the "Add medicine" button on the app window.
 - You can alter the time of a medicine by clicking on the "Alter medicine" button.
 - You can check medicines to consume in the future by clicking on the "Check medicines" button.
-- You can initiate the reminder system by clicking on quit and the system will display a pop-up window 
+- You can initiate the reminder system by clicking on quit from the menu and the system will display a pop-up window 
 and a sound whenever it's time to take a medicine.
 - You can locate the visual component (a picture of a stethoscope and prescription pills) right as the application 
 opens and the main window appears. 
