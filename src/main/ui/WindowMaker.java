@@ -14,6 +14,7 @@ public class WindowMaker extends JFrame {
     JButton loadButton;
     JButton quitButton;
     JButton checkMedButton;
+    JButton alterMedButton;
 
     JMenuBar menuBar;
     JMenu quitMenu;
@@ -56,15 +57,17 @@ public class WindowMaker extends JFrame {
         titleLabel(frame);
 
         addMedButton = makeButton("Add medicine", 126, frame);
-        checkMedButton = makeButton("Check medicines", 176, frame);
-        saveButton = makeButton("Save prescription", 226, frame);
-        loadButton = makeButton("Load prescription", 276, frame);
-        quitButton = makeButton("Quit", 326, frame);
+        alterMedButton = makeButton("Alter medicine", 176, frame);
+        checkMedButton = makeButton("Check medicines", 226, frame);
+        saveButton = makeButton("Save prescription", 276, frame);
+        loadButton = makeButton("Load prescription", 326, frame);
+        quitButton = makeButton("Quit", 376, frame);
 
         makeMenu(frame);
 
 
         frame.revalidate();
+
         frame.repaint();
     }
 

@@ -32,6 +32,7 @@ many others to take care of their health and maintain a routine of taking medici
 # Instructions for Grader
 
 - You can add medicines to the prescription by clicking on the "Add medicine" button on the app window.
+- You can alter the time of a medicine by clicking on the "Alter medicine" button.
 - You can check medicines to consume in the future by clicking on the "Check medicines" button.
 - You can initiate the reminder system by clicking on quit and the system will display a pop-up window 
 and a sound whenever it's time to take a medicine.
@@ -40,11 +41,11 @@ opens and the main window appears.
 - Another visual element is a picture of a stopwatch which becomes visible as soon as 
 the "Quit" button is accessed from the menu at the top and clicked.
 - Navigate between buttons using the tab key and use the buttons using the enter key to perform the required task.
-- You can press the enter key in the window to add medicines on the submit button to submit the medicine and on the cancel button 
-to cancel.
+- You can press the enter key in the window on the submit button to submit the medicine information and on the cancel 
+button to cancel.
 - In the window to check medicines, use the enter key to leave the window.
 - You can save the state of the prescription by clicking on the "Save prescription" button in the main menu.
 - You can reload the state of the prescription by clicking on the "Load prescription" button in the main menu.
-- **Important Note:** If you want to add more medicines to an existing file, make sure to click on "Load prescription" 
-before adding medicines or the previous prescription would be overwritten. DO NOT click on "Save prescription" as you 
-begin. This will also overwrite the existing file.
+- **Important Note:** If you want to add more medicines or alter them from an existing file, make sure to click on 
+"Load prescription" before doing so or the previous prescription would be overwritten. DO NOT click on 
+"Save prescription" as you begin. This will also overwrite the existing file.

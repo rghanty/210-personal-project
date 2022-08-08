@@ -29,11 +29,13 @@ public class PrescriptifyApp extends JFrame {
     private WritePrescription writer = new WritePrescription(fileLocation);
 
     private ActionListener addMedListener;
+    private ActionListener alterMedListener;
     private ActionListener checkMedListener;
     private ActionListener saveListener;
     private ActionListener loadListener;
     private ActionListener quitListener;
     private KeyListener addKeyListener;
+    private KeyListener alterKeyListener;
     private KeyListener checkKeyListener;
     private KeyListener saveKeyListener;
     private KeyListener loadKeyListener;
@@ -42,7 +44,7 @@ public class PrescriptifyApp extends JFrame {
 
 
 
-    // EFFECTS: initiates the prescription application, after which the reminder system begins.
+    // EFFECTS: initiates the prescription application
     public PrescriptifyApp() {
         prescription = new Prescription();
 
@@ -51,12 +53,14 @@ public class PrescriptifyApp extends JFrame {
         wm.openingMenu(this);
         buttonListeners();
         wm.addMedButton.addKeyListener(makeAddKeyListener());
+        wm.alterMedButton.addKeyListener(makeAlterKeyListener());
         wm.saveButton.addKeyListener(makeSaveKeyListener());
         wm.loadButton.addKeyListener(makeLoadKeyListener());
         wm.checkMedButton.addKeyListener(makeCheckKeyListener());
         wm.quitButton.addKeyListener(makeQuitKeyListener());
 
         wm.addMedButton.addActionListener(addMedListener);
+        wm.alterMedButton.addActionListener(alterMedListener);
         wm.saveButton.addActionListener(saveListener);
         wm.loadButton.addActionListener(loadListener);
         wm.checkMedButton.addActionListener(checkMedListener);
@@ -76,6 +80,7 @@ public class PrescriptifyApp extends JFrame {
     // EFFECTS: implements an action listener for each button in the main panel.
     public void buttonListeners() {
         addMedListener = e -> new AddMedsUI(prescription);
+        alterMedListener = e -> new AlterMedsUI(prescription);
         saveListener = e -> {
             savePrescription();
             JOptionPane.showMessageDialog(null, "Saved medicines to file", "Save",
@@ -116,6 +121,29 @@ public class PrescriptifyApp extends JFrame {
             }
         };
         return addKeyListener;
+    }
+
+    // EFFECTS: creates the alter Key listener to open AlterMedsUI whenever enter is pressed.
+    public KeyListener makeAlterKeyListener() {
+        alterKeyListener = new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    new AlterMedsUI(prescription);
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+
+            }
+        };
+        return alterKeyListener;
     }
 
     // EFFECTS: creates the check Key listener to open CheckMedsUI whenever enter is pressed.
