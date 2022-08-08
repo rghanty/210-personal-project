@@ -89,6 +89,7 @@ public class CheckMedsUI extends JFrame {
         this.getContentPane().add(topLabel);
     }
 
+    // MODIFIES: this
     // EFFECTS: creates the key listener for the OK button.
     public void makeOkKeyListener() {
         keyListener = new KeyListener() {

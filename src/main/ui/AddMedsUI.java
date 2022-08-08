@@ -130,8 +130,7 @@ public class AddMedsUI extends JFrame {
 
 
 
-
-
+    // MODIFIES: this
     // EFFECTS: makes the key listener for the submit listener
     public void startSubmitListener() {
         submitListener = new KeyListener() {
@@ -156,6 +155,7 @@ public class AddMedsUI extends JFrame {
 
     }
 
+    // MODIFIES: this
     // EFFECTS: makes the key listener for the cancel button
     public void startCancelListener() {
         cancelListener = new KeyListener() {

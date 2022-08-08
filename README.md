@@ -38,6 +38,7 @@ and a sound whenever it's time to take a medicine.
 - You can locate the visual component (a picture of a stethoscope and prescription pills) right as the application 
 opens and the main window appears. Another visual element is a picture of a stopwatch which becomes visible as soon as 
 the "Quit" button is pressed.
+- Navigate between buttons using the tab key and click on the buttons using the enter key to perform the required task.
 - You can press the enter key in the addMeds menu on the submit button to submit the medicine and on the cancel button 
 to cancel.
 - In the checkMeds JFrame, click on the enter key to leave the window.

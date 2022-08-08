@@ -29,13 +29,6 @@ public class PrescriptifyApp extends JFrame {
     private ReadPrescription reader = new ReadPrescription(fileLocation);
     private WritePrescription writer = new WritePrescription(fileLocation);
 
-//    protected String projLogo = "./data/ProjectLogo.PNG";
-//    private JButton addMedButton;
-//    private JButton editPresButton;
-//    private JButton checkMedButton;
-//    private JButton quitButton;
-//    private JButton saveButton;
-//    private JButton loadButton;
     private ActionListener addMedListener;
     private ActionListener checkMedListener;
     private ActionListener saveListener;
@@ -95,7 +88,7 @@ public class PrescriptifyApp extends JFrame {
         };
         checkMedListener = e -> new CheckMedsUI(prescription);
         quitListener = e -> {
-            //prFrame.setVisible(false);
+
             new RemindUI(prescription);
             this.dispose();
         };
