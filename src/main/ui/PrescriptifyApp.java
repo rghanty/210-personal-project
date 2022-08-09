@@ -1,6 +1,8 @@
 package ui;
 
 
+import model.Event;
+import model.EventLog;
 import model.Medicine;
 import model.Prescription;
 import persistence.ReadPrescription;
@@ -93,7 +95,7 @@ public class PrescriptifyApp extends JFrame {
         };
         checkMedListener = e -> new CheckMedsUI(prescription);
         quitListener = e -> {
-
+            printLog(EventLog.getInstance());
             new RemindUI(prescription);
             this.dispose();
         };
@@ -234,6 +236,7 @@ public class PrescriptifyApp extends JFrame {
             @Override
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    printLog(EventLog.getInstance());
                     new RemindUI(prescription);
                     PrescriptifyApp.this.dispose();
                 }
@@ -245,6 +248,14 @@ public class PrescriptifyApp extends JFrame {
             }
         };
         return quitKeyListener;
+
+    }
+
+    // EFFECTS: prints out all the event descriptions to the console
+    public void printLog(EventLog el) {
+        for (Event next : el) {
+            System.out.println(next.toString() + "\n\n");
+        }
 
     }
 

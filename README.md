@@ -49,3 +49,19 @@ button to cancel.
 - **Important Note:** If you want to add more medicines or alter them from an existing file, make sure to click on 
 "Load prescription" before doing so or the previous prescription would be overwritten. DO NOT click on 
 "Save prescription" as you begin. This will also overwrite the existing file.
+
+
+# Phase 4: Task 2
+
+When a medicine is added to the prescription, an event is added to the event log that describes the addition of the 
+medicine with its name and the time it was added for. <br> For example: when a medicine named "med1" is added to the 
+prescription with time 1500hrs, the event description reads:
+
+![img.png](data/img.png)
+
+Furthermore, when a medicine's time is changed, the event is logged as well. For example: if the time of med1 were to
+be changed from 1500hrs to 1600hrs, the event description reads:
+
+![img_1.png](data/img_1.png)
+
+Note that these messages are printed when the quit button is selected from the menu.

@@ -4,11 +4,10 @@ import model.Medicine;
 import model.Prescription;
 
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+
 
 // class of the frame that supports every operation related to adding medicines to a prescription.
 public class AddMedsUI extends JFrame {
@@ -22,32 +21,27 @@ public class AddMedsUI extends JFrame {
     private Prescription prescription;
     private KeyListener submitListener;
     private KeyListener cancelListener;
+    private ActionListener submitActionListener;
+    private ActionListener cancelActionListener;
 
     WindowMaker wm = new WindowMaker();
 
     // EFFECTS: constructs a new JFrame with a menu to add medicines at their respective times.
     public AddMedsUI(Prescription p) {
-
-
         wm.standardWindow(this);
+
         this.prescription = p;
+        nameField = new JTextField();
+        timeField = new JTextField();
 
+        wm.addLabelAndFields(medName,medTime,nameField,timeField,this);
 
-
-
-        addLabelAndFields();
         startSubmitListener();
         startCancelListener();
+        actionListeners();
+
         addButtons();
-
-
         setFocusable(true);
-
-
-
-
-
-
     }
 
 
@@ -60,63 +54,15 @@ public class AddMedsUI extends JFrame {
         submit.addKeyListener(submitListener);
 
 
-        modifyButton(submit, 146);
-        submit.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                addMedicine();
-            }
-        });
+        wm.modifyButton(submit, 146, AddMedsUI.this);
+        submit.addActionListener(submitActionListener);
+
         cancel = new JButton("Cancel");
-        modifyButton(cancel, 378);
+        wm.modifyButton(cancel, 378, AddMedsUI.this);
 
         cancel.addKeyListener(cancelListener);
 
-        cancel.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                AddMedsUI.this.setVisible(false);
-            }
-        });
-    }
-
-
-    // MODIFIES: this, button
-    // EFFECTS: adds a button on the frame at given x position
-    public void modifyButton(JButton button, int x) {
-        button.setForeground(Color.WHITE);
-        button.setFont(new Font("Century", Font.BOLD, 15));
-        button.setBackground(new Color(110, 120, 250));
-        button.setBounds(x, 420, 197, 28);
-        this.getContentPane().add(button);
-    }
-
-    // REQUIRES: the medTime input must be a number between 0 and 23 (inclusive)
-    // MODIFIES: this
-    // EFFECTS: adds labels and text fields to receive user input
-    public void addLabelAndFields() {
-
-        medName = new JLabel("Medicine Name:");
-        medName.setForeground(new Color(255, 255, 255));
-        medName.setFont(new Font("Georgia", Font.BOLD, 15));
-        medName.setBounds(10, 80, 146, 27);
-        this.getContentPane().add(medName);
-
-        nameField = new JTextField();
-        nameField.setBounds(290, 85, 215, 20);
-        this.getContentPane().add(nameField);
-        nameField.setColumns(10);
-
-        medTime = new JLabel("Medicine Time (0-23):");
-        medTime.setForeground(Color.WHITE);
-        medTime.setFont(new Font("Georgia", Font.BOLD, 15));
-        medTime.setBounds(10, 180, 200, 50);
-        this.getContentPane().add(medTime);
-
-        timeField = new JTextField();
-        timeField.setColumns(10);
-        timeField.setBounds(289, 191, 215, 19);
-        this.getContentPane().add(timeField);
+        cancel.addActionListener(cancelActionListener);
     }
 
 
@@ -180,5 +126,12 @@ public class AddMedsUI extends JFrame {
             }
         };
 
+    }
+
+    // MODIFIES: this
+    // EFFECTS: creates action listeners for the submit and cancel buttons
+    private void actionListeners() {
+        submitActionListener = e -> addMedicine();
+        cancelActionListener = e -> AddMedsUI.this.setVisible(false);
     }
 }

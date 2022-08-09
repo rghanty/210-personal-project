@@ -25,6 +25,8 @@ public class Prescription {
     // EFFECTS: Adds a medicine and its corresponding time of consumption to the prescription.
     public void addMedTime(Medicine med, Integer time) {
         prescription.put(med, time);
+        EventLog.getInstance().logEvent(new Event("Medicine " + med.getName() + " added to prescription "
+                + "with time " + time + "00hrs."));
     }
 
     // MODIFIES: this
@@ -57,6 +59,9 @@ public class Prescription {
         for (Medicine m: prescription.keySet()) {
             if (m.getName().equals(med) && (viewTime(m) == timeInit)) {
                 prescription.replace(m, timeFinal);
+                EventLog.getInstance().logEvent(new Event("Medicine time of "
+                        + med + " changed from " + timeInit + "00hrs"
+                        + " to " + timeFinal + "00hrs."));
                 return true;
             }
         }

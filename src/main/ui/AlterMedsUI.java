@@ -31,8 +31,7 @@ public class AlterMedsUI extends JFrame {
         wm.standardWindow(this);
         this.prescription = p;
 
-        makeLabels();
-        makeFields();
+        makeLabelsAndFields();
         makeSubmitKeyListener();
         makeCancelKeyListener();
         makeSubmitButton();
@@ -41,19 +40,10 @@ public class AlterMedsUI extends JFrame {
 
     // MODIFIES: this
     // EFFECTS: creates the labels in the frame
-    private void makeLabels() {
-        name = new JLabel("Medicine Name:");
-        name.setForeground(new Color(255, 255, 255));
-        name.setFont(new Font("Georgia", Font.BOLD, 15));
-        name.setBounds(10, 80, 146, 27);
-        this.getContentPane().add(name);
-
-
-        time = new JLabel("Initial Medicine Time (0-23):");
-        time.setForeground(Color.WHITE);
-        time.setFont(new Font("Georgia", Font.BOLD, 15));
-        time.setBounds(10, 180, 250, 50);
-        this.getContentPane().add(time);
+    private void makeLabelsAndFields() {
+        nameField = new JTextField();
+        timeField = new JTextField();
+        wm.addLabelAndFields(name, time, nameField, timeField, this);
 
         finalTime = new JLabel("Final Medicine Time (0-23):");
         finalTime.setForeground(Color.WHITE);
@@ -61,27 +51,13 @@ public class AlterMedsUI extends JFrame {
         finalTime.setBounds(10, 280, 250, 50);
         this.getContentPane().add(finalTime);
 
-
-    }
-
-
-    // MODIFIES: this
-    // EFFECTS: creates the text fields in the frame
-    private void makeFields() {
-        nameField = new JTextField();
-        nameField.setBounds(290, 85, 215, 20);
-        this.getContentPane().add(nameField);
-        nameField.setColumns(10);
-
-        timeField = new JTextField();
-        timeField.setColumns(10);
-        timeField.setBounds(289, 191, 215, 19);
-        this.getContentPane().add(timeField);
-
         finalTimeField = new JTextField();
         finalTimeField.setColumns(10);
         finalTimeField.setBounds(289, 297, 215, 19);
         this.getContentPane().add(finalTimeField);
+
+
+
     }
 
     // MODIFIES: this
@@ -89,7 +65,7 @@ public class AlterMedsUI extends JFrame {
     private void makeSubmitButton() {
         submit = new JButton("Submit");
         submit.addKeyListener(submitListener);
-        makeButton(submit, 146);
+        wm.modifyButton(submit, 146, AlterMedsUI.this);
         this.getContentPane().add(submit);
         submit.addActionListener(new ActionListener() {
             @Override
@@ -105,7 +81,7 @@ public class AlterMedsUI extends JFrame {
     private void makeCancelButton() {
         cancel = new JButton("Cancel");
         cancel.addKeyListener(cancelListener);
-        makeButton(cancel, 378);
+        wm.modifyButton(cancel, 378, AlterMedsUI.this);
         this.getContentPane().add(cancel);
         cancel.addActionListener(new ActionListener() {
             @Override
@@ -113,16 +89,6 @@ public class AlterMedsUI extends JFrame {
                 AlterMedsUI.this.setVisible(false);
             }
         });
-
-    }
-
-
-    // EFFECTS: creates a common layout for every button in the frame
-    private void makeButton(JButton button, int x) {
-        button.setForeground(Color.WHITE);
-        button.setFont(new Font("Century", Font.BOLD, 15));
-        button.setBackground(new Color(110, 120, 250));
-        button.setBounds(x, 420, 197, 28);
 
     }
 

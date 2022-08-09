@@ -125,5 +125,44 @@ public class WindowMaker extends JFrame {
         quitMenu.add(quitButton);
     }
 
+    // MODIFIES: this, button
+    // EFFECTS: adds a button on the frame at given x position
+    public void modifyButton(JButton button, int x, JFrame frame) {
+        button.setForeground(Color.WHITE);
+        button.setFont(new Font("Century", Font.BOLD, 15));
+        button.setBackground(new Color(110, 120, 250));
+        button.setBounds(x, 420, 197, 28);
+        frame.getContentPane().add(button);
+    }
+
+    // REQUIRES: the medTime input must be a number between 0 and 23 (inclusive)
+    // MODIFIES: this
+    // EFFECTS: adds labels and text fields to receive user input
+    public void addLabelAndFields(JLabel medName, JLabel medTime,
+                                  JTextField nameField, JTextField timeField, JFrame frame) {
+
+        medName = new JLabel("Medicine Name:");
+        medName.setForeground(new Color(255, 255, 255));
+        medName.setFont(new Font("Georgia", Font.BOLD, 15));
+        medName.setBounds(10, 80, 146, 27);
+        frame.getContentPane().add(medName);
+
+
+        nameField.setBounds(290, 85, 215, 20);
+        frame.getContentPane().add(nameField);
+        nameField.setColumns(10);
+
+        medTime = new JLabel("Medicine Time (0-23):");
+        medTime.setForeground(Color.WHITE);
+        medTime.setFont(new Font("Georgia", Font.BOLD, 15));
+        medTime.setBounds(10, 180, 200, 50);
+        frame.getContentPane().add(medTime);
+
+
+        timeField.setColumns(10);
+        timeField.setBounds(289, 191, 215, 19);
+        frame.getContentPane().add(timeField);
+    }
+
 
 }
