@@ -11,7 +11,7 @@ import java.awt.event.KeyListener;
 
 // class that supports every operation related to altering the time of a medicine
 public class AlterMedsUI extends JFrame {
-    WindowMaker wm = new WindowMaker();
+    WindowMaker wm;
     private Prescription prescription;
     private JButton submit;
     private JButton cancel;
@@ -27,6 +27,7 @@ public class AlterMedsUI extends JFrame {
 
     // EFFECTS: constructs a JFrame for the AlterMedsUI
     public AlterMedsUI(Prescription p) {
+        wm = new WindowMaker();
 
         wm.standardWindow(this);
         this.prescription = p;

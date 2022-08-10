@@ -42,6 +42,7 @@ public class PrescriptifyApp extends JFrame {
     private KeyListener saveKeyListener;
     private KeyListener loadKeyListener;
     private KeyListener quitKeyListener;
+    private WindowMaker wm;
 
 
 
@@ -50,7 +51,7 @@ public class PrescriptifyApp extends JFrame {
     public PrescriptifyApp() {
         prescription = new Prescription();
 
-        WindowMaker wm = new WindowMaker();
+        wm = new WindowMaker();
 
         wm.openingMenu(this);
         buttonListeners();
@@ -98,6 +99,7 @@ public class PrescriptifyApp extends JFrame {
             printLog(EventLog.getInstance());
             new RemindUI(prescription);
             this.dispose();
+
         };
 
     }
@@ -239,6 +241,7 @@ public class PrescriptifyApp extends JFrame {
                     printLog(EventLog.getInstance());
                     new RemindUI(prescription);
                     PrescriptifyApp.this.dispose();
+
                 }
             }
 

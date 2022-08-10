@@ -5,9 +5,8 @@ import java.util.Date;
 
 
 /**
- * Represents events for functionalities in the prescription application.
+ * Represents an alarm system event.
  */
-// this code was modeled after https://github.students.cs.ubc.ca/CPSC210/AlarmSystem
 public class Event {
     private static final int HASH_CONSTANT = 13;
     private Date dateLogged;

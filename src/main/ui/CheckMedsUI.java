@@ -18,7 +18,7 @@ public class CheckMedsUI extends JFrame {
 
     private Prescription prescription;
     private JLabel topLabel;
-    WindowMaker wm = new WindowMaker();
+    WindowMaker wm;
     Calendar calendar;
     private JLabel medLabel;
     private JButton okButton;
@@ -26,7 +26,7 @@ public class CheckMedsUI extends JFrame {
 
     // EFFECTS: constructs the JFrame which displays medicines to be consumed.
     public CheckMedsUI(Prescription prescription) {
-
+        wm = new WindowMaker();
 
         this.prescription = prescription;
         wm.standardWindow(this);

@@ -13,13 +13,14 @@ import java.util.GregorianCalendar;
 public class RemindUI extends JFrame {
 
 
-    private WindowMaker wm = new WindowMaker();
+    private WindowMaker wm;
     private Prescription prescription;
     private Calendar calendar;
     private ArrayList<Medicine> medList;
 
 // EFFECTS: creates the reminder system application with the same window framework and initiates the reminder system.
     public RemindUI(Prescription p) {
+        wm = new WindowMaker();
 
 
         wm.standardWindow(this);

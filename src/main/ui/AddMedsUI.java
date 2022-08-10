@@ -24,10 +24,11 @@ public class AddMedsUI extends JFrame {
     private ActionListener submitActionListener;
     private ActionListener cancelActionListener;
 
-    WindowMaker wm = new WindowMaker();
+    WindowMaker wm;
 
     // EFFECTS: constructs a new JFrame with a menu to add medicines at their respective times.
     public AddMedsUI(Prescription p) {
+        wm = new WindowMaker();
         wm.standardWindow(this);
 
         this.prescription = p;

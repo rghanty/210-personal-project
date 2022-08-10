@@ -65,3 +65,14 @@ be changed from 1500hrs to 1600hrs, the event description reads:
 ![img_1.png](data/img_1.png)
 
 Note that these messages are printed when the quit button is selected from the menu.
+
+# Phase 4: Task 3
+![img_1.png](data/UML_Design_Diagram.jpg)
+- Given the UML diagram of classes in this project, a lot of classes use the Prescription class and the Windowmaker
+class because it is necessary that each of them is used and passed along the components of the project.
+- Additionally, it would have been possible to make Windowmaker an abstract class and have classes in the UI package 
+extend it but since they already extended JFrame, it would not have been possible.
+- It would also have been possible to make Windowmaker an interface but since some of the ui classes use the same 
+implementation of some methods, it would have been redundant to implement the method the same way twice.
+- I would have substituted if statements with switch statements to improve readability.
+- I would also have converted the method bodies of some action listeners to a lambda expression.
