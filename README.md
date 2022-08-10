@@ -75,4 +75,4 @@ extend it but since they already extended JFrame, it would not have been possibl
 - It would also have been possible to make Windowmaker an interface but since some of the ui classes use the same 
 implementation of some methods, it would have been redundant to implement the method the same way twice.
 - I would have substituted if statements with switch statements to improve readability.
-- I would also have converted the method bodies of some action listeners to a lambda expression.
+- I would also have converted the method bodies of a few action listeners to a lambda expression.
