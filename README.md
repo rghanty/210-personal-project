@@ -66,6 +66,14 @@ be changed from 1500hrs to 1600hrs, the event description reads:
 
 Note that these messages are printed when the quit button is selected from the menu.
 
+Additionally, note that the medicine added event is added to the event log even when the prescription is loaded because
+the load prescription method calls the corresponding add medicine method in the Prescription class. <br>
+So, when load prescription is clicked, and then the quit button is clicked, the events corresponding to adding the 
+medicines to the prescription are printed to the console. For example, when two medicines are loaded from the file, we
+get:  
+
+![img.png](data/event_load.png)
+
 # Phase 4: Task 3
 ![img_1.png](data/UML_Design_Diagram.jpg)
 - Given the UML diagram of classes in this project, a lot of classes use the Prescription class and the Windowmaker
