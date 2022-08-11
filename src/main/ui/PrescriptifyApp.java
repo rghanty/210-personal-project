@@ -475,7 +475,7 @@ public class PrescriptifyApp extends JFrame {
             writer.fileOpen();
             writer.writeTo(prescription);
             writer.closeWriter();
-            System.out.println("Saved medicines to file " + fileLocation);
+            //System.out.println("Saved medicines to file " + fileLocation);
 
         } catch (FileNotFoundException f) {
             System.out.println("Sorry, the file with " + fileLocation + " was not found");
@@ -490,7 +490,7 @@ public class PrescriptifyApp extends JFrame {
     public void loadPrescription() {
         try {
             prescription = reader.readPres();
-            System.out.println("Loading prescription contents from " + fileLocation);
+            //System.out.println("Loading prescription contents from " + fileLocation);
         } catch (IOException i) {
             System.out.println("Sorry, the required operation could not be performed.");
         }
