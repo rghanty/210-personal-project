@@ -75,7 +75,7 @@ get:
 ![img.png](data/event_load.png)
 
 # Phase 4: Task 3
-![img_1.png](data/UML_Design_Diagram.jpg)
+![](data/UML_Design_Diagram.jpg)
 - Given the UML diagram of classes in this project, a lot of classes use the Prescription class and the Windowmaker
 class because it is necessary that each of them is used and passed along the components of the project.
 - Additionally, it would have been possible to make Windowmaker an abstract class and have classes in the UI package 
