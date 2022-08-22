@@ -29,7 +29,7 @@ many others to take care of their health and maintain a routine of taking medici
 - As a user, I want to be able to load the details of my prescription from a file.
 
 
-# Instructions for Grader
+# General Instructions
 
 - You can add medicines to the prescription by clicking on the "Add medicine" button on the app window.
 - You can alter the time of a medicine by clicking on the "Alter medicine" button.
@@ -51,7 +51,7 @@ button to cancel.
 "Save prescription" as you begin. This will also overwrite the existing file.
 
 
-# Phase 4: Task 2
+# Logging an event: example
 
 When a medicine is added to the prescription, an event is added to the event log that describes the addition of the 
 medicine with its name and the time it was added for. <br> For example: when a medicine named "med1" is added to the 
@@ -74,7 +74,7 @@ get:
 
 ![img.png](data/event_load.png)
 
-# Phase 4: Task 3
+# UML diagram and general comments
 ![](data/UML_Design_Diagram.jpg)
 - Given the UML diagram of classes in this project, a lot of classes use the Prescription class and the Windowmaker
 class because it is necessary that each of them is used and passed along the components of the project.
