@@ -27,6 +27,8 @@ many others to take care of their health and maintain a routine of taking medici
 - As a user, I want to be able to view the time of consumption of a given medicine.
 - As a user, I want to be able to save the details of my prescription to a file.
 - As a user, I want to be able to load the details of my prescription from a file.
+- As a user, I want to be able to remind myself when to take a medicine.
+- As a user, I want to be able to make changes to my prescription with the changes reflected in my reminder.
 
 
 # General Instructions
